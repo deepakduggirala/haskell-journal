@@ -1,17 +1,15 @@
-# TODO
+### TODO
 
 -   [ ] <https://www.hackerrank.com/domains/fp>
 -   [ ] Graham Hutton Programming in Haskell remaining chapters exercises and publish here <https://github.com/deepakduggirala/graham-hutton-haskell-vol2-solutions>
 -   [ ] Real World Haskell
 
-# Documentation (<https://github.com/deepakduggirala/haskell-journal>)
+## Documentation on [Github](https://github.com/deepakduggirala/haskell-journal)
 
 -   Graham Hutton Programming in Haskell Solutions <https://github.com/deepakduggirala/graham-hutton-haskell-vol2-solutions>
 -   Stack setup (docker) <https://github.com/deepakduggirala/stack-ghc-docker>
 -   SPOJ Problems <https://github.com/deepakduggirala/Haskell-SPOJ>
-
-# Setting Up a Development Environment (<https://www.vacationlabs.com/haskell/environment-setup.html>)
-
+-   Setting Up a Development Environment (<https://www.vacationlabs.com/haskell/environment-setup.html>)
 -   Install stack on Mac OS `curl -sSL https://get.haskellstack.org/ | sh`
 
 1.  VS code extension
@@ -66,4 +64,24 @@
         (^^) :: (Fractional a, Integral b) => a -> b -> a
         (**) :: Floating a => a -> a -> a
         ```
-    -   Precedence <https://gist.github.com/deepakduggirala/f34e721207c39ce3236d177c9f20f558>        
+    -   Precedence <https://gist.github.com/deepakduggirala/f34e721207c39ce3236d177c9f20f558>       
+7.  IO
+
+    -   module <b>`Text.Printf`</b> has c like print formatters
+    -   Read numbers one per line
+        ```haskell
+        -- Input:
+        -- 2
+        -- 5
+        -- 3
+        -- 4
+        -- Output:
+        -- 2
+        -- 5
+        -- 3
+        -- 4
+        f = id
+        main = do
+            inputdata <- getContents
+            mapM_ (putStrLn. show). f. map read. lines $ inputdata
+        ```
