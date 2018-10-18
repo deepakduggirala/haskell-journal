@@ -46,6 +46,11 @@
             ```
             can be written as `let { fact 0 = 1 ; fact n = n * fact (n-1) }`
 
+    -   Importing modules
+        -   `:m` resets the imported modules
+        -   Qualified import `import qualified Data.ByteString.Lazy as B`
+        -   `:l ConvexHull.hs` to load a file
+
 5.  Some Stack wisdom (<https://lexi-lambda.github.io/blog/2018/02/10/an-opinionated-guide-to-haskell-in-2018/> )
 
     -   Never run `stack install` to install a dependency, it's just an alias for `stack build --copy-bins`
