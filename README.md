@@ -69,6 +69,7 @@
 
     -   module <b>`Text.Printf`</b> has c like print formatters
     -   Read numbers one per line
+
         ```haskell
         -- Input:
         -- 2
@@ -84,4 +85,18 @@
         main = do
             inputdata <- getContents
             mapM_ (putStrLn. show). f. map read. lines $ inputdata
+        ```
+
+8.  Pattern Matching
+    -   ```haskell
+        f points@(p:ps) = if p then points else ps
+        ```
+9.  Quick Check
+    -   Install package by adding `QuickCheck` to stack.yaml
+    -   Write a property along with type
+        ```haskell
+        import Test.QuickCheck
+        prop_reverse :: [Int] -> Bool
+        prop_reverse xs = reverse (reverse xs) == xs
+        quickCheck prop_reverse
         ```
