@@ -4,6 +4,11 @@
 -   [ ] Graham Hutton Programming in Haskell remaining chapters exercises and publish here <https://github.com/deepakduggirala/graham-hutton-haskell-vol2-solutions>
 -   [ ] Real World Haskell
 
+## Questions
+
+-   What classes can be auto derived?
+-   Special functions (unwrappers) included with newtype? 
+
 ## Documentation on [Github](https://github.com/deepakduggirala/haskell-journal)
 
 -   Graham Hutton Programming in Haskell Solutions <https://github.com/deepakduggirala/graham-hutton-haskell-vol2-solutions>
@@ -87,6 +92,18 @@
             mapM_ (putStrLn. show). f. map read. lines $ inputdata
         ```
 
+    -   <b>interact</b> function returns the entire input as a string, which we can manipulate however we like.
+        ```haskell
+        import Control.Monad
+        main :: IO ()
+        main = interact $ show . sum . map read . tail . words
+        -- Input:
+        -- 1 2 3 4 5 6
+        -- Output:
+        -- 21
+        ```
+
+
 8.  Pattern Matching
     -   ```haskell
         f points@(p:ps) = if p then points else ps
@@ -100,3 +117,12 @@
         prop_reverse xs = reverse (reverse xs) == xs
         quickCheck prop_reverse
         ```
+10. Prelude (<http://dev.stephendiehl.com/hask/#prelude>)
+    -   Protolude (protolude package)
+    -   To swap out Prelude
+        ```haskell
+            {-# LANGUAGE NoImplicitPrelude #-}
+            import Protolude
+        ```
+11. Run Program with input and comapre output
+    -   `cat input | stack runghc Throwaway.hs | code --diff output -`
