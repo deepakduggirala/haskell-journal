@@ -24,7 +24,7 @@
     -   Install "Haskell Language Server" plugin in VS code
 2.  Create a "first-project"
     -   Make note of the resolver used in stack.yaml file of haskell-ide-engine and use it for creating first-project
-    -   `stack new --resolver=<RESOLVER> first-project`
+    -   `stack new --resolver=<RESOLVER> first-project` (resolver=nightly-2018-09-28)
     -   `cd first-project`
     -   `stack setup`
     -   Start ghci with `stack ghci`
@@ -125,4 +125,10 @@
             import Protolude
         ```
 11. Run Program with input and comapre output
+
     -   `cat input | stack runghc Throwaway.hs | code --diff output -`
+
+12. GHCI
+    -   Language extensions: `:set -XOverloadedStrings`
+    -   `:browse` lists all top level definitions in the imported module
+13. Debug.Trace.trace :: String -> a -> a
