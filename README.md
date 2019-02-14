@@ -50,9 +50,13 @@
             can be written as `let { fact 0 = 1 ; fact n = n * fact (n-1) }`
 
     -   Importing modules
+
         -   `:m` resets the imported modules
         -   Qualified import `import qualified Data.ByteString.Lazy as B`
         -   `:l ConvexHull.hs` to load a file
+
+    -   Language extensions: `:set -XOverloadedStrings`
+    -   `:browse` lists all top level definitions in the imported module
 
 5.  Some Stack wisdom (<https://lexi-lambda.github.io/blog/2018/02/10/an-opinionated-guide-to-haskell-in-2018/> )
 
@@ -63,13 +67,15 @@
     -   Local searchable documentation install hoogle, `stack hoogle -- generate --local`. start a local instance of hoogle `stack hoogle -- server --local --port=8080`.
 
 6.  Haskell Gotchas
+
     -   Exponentiation
         ```haskell
         (^) :: (Num a, Integral b) => a -> b -> a
         (^^) :: (Fractional a, Integral b) => a -> b -> a
         (**) :: Floating a => a -> a -> a
         ```
-    -   Precedence <https://gist.github.com/deepakduggirala/f34e721207c39ce3236d177c9f20f558>       
+    -   Precedence <https://gist.github.com/deepakduggirala/f34e721207c39ce3236d177c9f20f558>
+
 7.  IO
 
     -   module <b>`Text.Printf`</b> has c like print formatters
@@ -124,11 +130,18 @@
             {-# LANGUAGE NoImplicitPrelude #-}
             import Protolude
         ```
-11. Run Program with input and comapre output
+11. Run Program with input and compare output
 
     -   `cat input | stack runghc Throwaway.hs | code --diff output -`
 
-12. GHCI
-    -   Language extensions: `:set -XOverloadedStrings`
-    -   `:browse` lists all top level definitions in the imported module
-13. Debug.Trace.trace :: String -> a -> a
+12. Debug.Trace.trace :: String -> a -> a
+
+13. Name clashes in record fields
+    -   ```haskell
+        {-# LANGUAGE DuplicateRecordFields #-}
+        ```
+    -   <https://wiki.haskell.org/Name_clashes_in_record_fields>
+
+## Insights / Questions
+
+-   Programming with IO or State monad is same as providing explicit instructions on how to manage memory, not necessarily the stance of functional programming. Functional programming is about defining precisely what stuff is, not providing explicit instructions on how to compute. So, why are some pure functions harder to implement without mutating the state?
